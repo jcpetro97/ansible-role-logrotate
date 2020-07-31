@@ -1,0 +1,6 @@
+---
+
+- name: Install logrotate
+  become: yes
+  package:
+    name: "logrotate"

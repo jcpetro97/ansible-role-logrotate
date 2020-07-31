@@ -1,0 +1,23 @@
+---
+
+- name: remove /etc/logrotate.d/syslog if it exists
+  file: 
+    path: /etc/logrotate.d/syslog
+    state: absent
+- name: remove /etc/logrotate.d/rsyslog if it exists
+  file:
+    path: /etc/logrotate.d/rsyslog
+    state: absent
+- name: Configure Application Logs Logrotate Config
+  become: yes
+  template:
+    dest: /etc/logrotate.d/application_logs
+    src: application_logs.logrotate.d.j2
+  when: logrotate_application_logs_paths != []
+
+- name: Configure Custom Logrotate Configs
+  become: yes
+  template:
+    dest: "/etc/logrotate.d/{{ item.name }}"
+    src: custom_logs.logrotate.d.j2
+  with_items: "{{ logrotate_custom_configs }}"

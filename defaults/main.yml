@@ -1,0 +1,29 @@
+---
+
+logrotate_application_logs_paths:
+  - /var/log/syslog
+  - /var/log/maillog
+  - /var/log/auth.log
+  - /var/log/lpr.log
+  - /var/log/cron
+  - /var/log/debug
+  - /var/log/messages
+  - /var/log/all.log
+  - /var/log/boot.log
+  - /var/log/sudo.log
+  - /var/log/sshd.log
+
+#   - /bin/command_one
+#   - /usr/bin/command_two
+logrotate_custom_configs: []
+#  - name: custom_log
+#    path: "/var/log/cutom/*.log"
+#    options:
+#      - weekly
+#      - size 25M
+#      - missingok
+#      - compress
+#      - delaycompress
+#      - copytruncate
+#        scripts:
+#          postrotate: "service rsyslog restart"

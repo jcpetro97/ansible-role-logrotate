@@ -1,0 +1,18 @@
+##
+# {{ ansible_managed }}
+#
+
+{% for path in logrotate_application_logs_paths %}
+"{{ path }}"
+{% endfor %} {
+        rotate 7
+        daily
+        missingok
+        compress
+        notifempty
+        sharedscripts
+        postrotate
+                /bin/systemctl restart rsyslog >/dev/null 2>&1 || true
+        endscript
+        su root root
+}
