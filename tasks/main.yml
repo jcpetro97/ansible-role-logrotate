@@ -1,11 +1,11 @@
 ---
 
 - name: Install logrotate
-  include: build.yml
+  include_tasks: build.yml
   tags:
     - build
 
 - name: Configure logrotate
-  include: configure.yml
+  include_tasks: configure.yml
   tags:
     - configure
