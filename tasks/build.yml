@@ -2,5 +2,5 @@
 
 - name: Install logrotate
   become: yes
-  package:
+  ansible.builtin.package:
     name: "logrotate"
